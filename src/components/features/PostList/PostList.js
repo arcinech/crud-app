@@ -5,7 +5,7 @@ import Card from "react-bootstrap/Card"
 import {Link} from "react-router-dom";
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col';
-import styles from './List.module.scss';
+import styles from './PostList.module.scss';
 
 const List = () => {
   const posts = useSelector(getAllPosts);
@@ -20,7 +20,9 @@ const List = () => {
             <Card.Text><strong>Author: </strong>{author}</Card.Text>
             <Card.Text><strong>Published: </strong>{publishedDate}</Card.Text>
             <Card.Text>{shortDescription}</Card.Text>
-            <Button as={Link} to={`/post/${id}`} className={`${styles.wMaxContent} mt-auto mb-0 w-auto`}>Read More</Button>
+            <div>
+              <Button as={Link} to={`/post/${id}`} className="mt-auto mb-0">Read More</Button>
+            </div>
         </Card>
        </Col>
       ))}
