@@ -1,9 +1,11 @@
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card"
+import { useDispatch } from "react-redux";
 import { Link, useParams } from "react-router-dom";
+import { showModal } from "../../../redux/showModalRedux";
 
-const PostCard = ({id, title, author, publishedDate, shortDescription, content, handleShow}) => {
-
+const PostCard = ({id, title, author, publishedDate, shortDescription, content}) => {
+    const dispatch = useDispatch();
     const urlParam = useParams();
     const urlCheck = (url) => (Object.keys(url).length === 0);
 
@@ -12,6 +14,10 @@ const PostCard = ({id, title, author, publishedDate, shortDescription, content, 
         if (urlCheck(url)) return<Card.Text>{shortDescription}</Card.Text>
         return <Card.Text>{content}</Card.Text>
     }
+
+    const handleShow = () => {
+      dispatch(showModal(true))
+    };
      
 
     return (

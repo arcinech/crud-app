@@ -33,6 +33,7 @@ const initialState = {
       author: 'Frank Nitti'
     }
   ],
+  modal: false,
 };
 
 export default initialState;
