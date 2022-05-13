@@ -2,7 +2,7 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card"
 import { Link, useParams } from "react-router-dom";
 
-const PostCard = ({id, title, author, publishedDate, shortDescription, content}) => {
+const PostCard = ({id, title, author, publishedDate, shortDescription, content, handleShow}) => {
 
     const urlParam = useParams();
     const urlCheck = (url) => (Object.keys(url).length === 0);
@@ -23,7 +23,7 @@ const PostCard = ({id, title, author, publishedDate, shortDescription, content})
                 && 
                 <div>
                     <Button className="mx-1" variant="outline-info">Edit</Button>
-                    <Button variant="outline-danger">Delete</Button>
+                    <Button variant="outline-danger" onClick={handleShow}>Delete</Button>
                 </div>
             }
             </div>
