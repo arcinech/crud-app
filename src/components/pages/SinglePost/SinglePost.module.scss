@@ -1,0 +1,28 @@
+$breakpoints: (
+  small : 480px,
+  medium: 800px,
+  large : 1024px
+);
+
+@mixin mq($mq-breakpoint, $mq-breakpoints: $breakpoints) {
+
+  @if map-has-key($mq-breakpoints, $mq-breakpoint) {
+    $mq-breakpoint: map-get($mq-breakpoints, $mq-breakpoint);
+  }
+  
+  @media screen and (min-width: #{$mq-breakpoint}) {
+    @content;
+  }
+}
+
+@include mq(small) {
+  .contentWidth {width: 100%};
+}
+
+@include mq(medium) {
+  .contentWidth {width: 75%};
+}
+
+@include mq(large) {
+  .contentWidth {width: 50%};
+}
