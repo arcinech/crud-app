@@ -15,7 +15,7 @@ const AddPostForm = () => {
   const [content, setContent] = useState('');
   const [published, setPublished] = useState('');
 
-  const clearForm = () => {
+  const resetForm = () => {
     setTitle('');
     setAuthor('');
     setShortDescription('');
@@ -26,7 +26,7 @@ const AddPostForm = () => {
   const handleAdd = (e) => {
     e.preventDefault();
     dispatch(addPost({title, author, shortDescription, content, published}));
-    clearForm();
+    resetForm();
     navigate("/");
   }
 
