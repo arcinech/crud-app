@@ -1,10 +1,13 @@
-import { useParams } from "react-router-dom";
-
+import EditPostForm from '../../features/EditPostForm/EditPostForm';
+import styles from './PostEdit.module.scss';
 const PostEdit = () => {
-  const {id} = useParams();
+
   return (
-    <div>Edit Post</div>
-  );
+    <section className={styles.contentWidth}>
+      <h2>Edit Post</h2>
+      <EditPostForm />
+    </section>
+    );
 
 };
 
