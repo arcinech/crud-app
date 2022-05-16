@@ -28,7 +28,7 @@ const PostCard = ({id, title, author, publishedDate, shortDescription, content})
                 !urlCheck(urlParam) 
                 && 
                 <div>
-                    <Button className="mx-1" variant="outline-info">Edit</Button>
+                    <Button as={Link} to={`/post/edit/${id}`} className="mx-1" variant="outline-info">Edit</Button>
                     <Button variant="outline-danger" onClick={handleShow}>Delete</Button>
                 </div>
             }
@@ -38,9 +38,11 @@ const PostCard = ({id, title, author, publishedDate, shortDescription, content})
 
             {selectText(urlParam)}
 
+            {urlCheck(urlParam)
+            &&
             <div>
             <Button as={Link} to={`/post/${id}`} className="mt-auto mb-0">Read More</Button>
-            </div>
+            </div>}
         </Card >
     );
 }
