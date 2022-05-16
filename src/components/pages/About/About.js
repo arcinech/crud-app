@@ -1,6 +1,12 @@
 const About = () => {
   return (
-    <h2>Page Not Found</h2>
+    <section className="text-center">
+      <h2>About</h2>
+      <div>
+        <h3>Welcome to Blog.app</h3>
+        <p>Easy tool for blog articles</p>
+      </div>
+    </section>
   );
 };
 
