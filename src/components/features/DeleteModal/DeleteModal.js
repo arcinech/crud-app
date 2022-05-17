@@ -14,7 +14,8 @@ const DeleteModal = ({id}) => {
   };
 
   const handleDelete = () => {
-    dispatch(deletePost(id))
+    handleClose();
+    dispatch(deletePost(id));
   }
 
   return (
