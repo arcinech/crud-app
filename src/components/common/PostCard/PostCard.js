@@ -3,16 +3,18 @@ import Card from "react-bootstrap/Card"
 import { useDispatch } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { showModal } from "../../../redux/showModalRedux";
+import {dateToStr} from '../../../utils/dateToStr'
 
 const PostCard = ({id, title, author, publishedDate, shortDescription, content}) => {
     const dispatch = useDispatch();
     const urlParam = useParams();
     const urlCheck = (url) => (Object.keys(url).length === 0);
+    console.log(content);
 
     // select short or full text
     const selectText = (url) => {
         if (urlCheck(url)) return<Card.Text>{shortDescription}</Card.Text>
-        return <Card.Text>{content}</Card.Text>
+        return <p className="card-text" dangerouslySetInnerHTML={{__html: content}}/>
     }
 
     const handleShow = () => {
@@ -34,7 +36,7 @@ const PostCard = ({id, title, author, publishedDate, shortDescription, content})
             }
             </div>
             <Card.Text><strong>Author: </strong>{author}</Card.Text>
-            <Card.Text><strong>Published: </strong>{publishedDate}</Card.Text>
+            <Card.Text><strong>Published: </strong>{dateToStr(publishedDate)}</Card.Text>
 
             {selectText(urlParam)}
 
