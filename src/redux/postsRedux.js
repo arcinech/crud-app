@@ -3,6 +3,8 @@ import shortid from "shortid";
 //selectors
 export const getAllPosts = ({posts}) => posts;
 export const getPostById = ({posts}, id) => posts.find(post => post.id === id);
+export const getPostByCategor = ({posts}, category) => posts.filter(post => post.category === category);
+
 // actions
 const createActionName = actionName => `app/posts/${actionName}`;
 const DELETE_POST = createActionName('DELETE_POST');

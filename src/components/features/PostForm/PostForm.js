@@ -22,7 +22,7 @@ const PostForm = ({action, actionText, ...props}) => {
     const [dateError, setDateError] = useState(false);
     const [contentError, setContentError] = useState(false);
 
-    const categories = useSelector(state => getAllCategories(state));
+    const categories = useSelector(getAllCategories);
 
    categories.map(({id, name}) => console.log(id, name));
 
