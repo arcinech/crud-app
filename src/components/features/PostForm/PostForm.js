@@ -5,6 +5,8 @@ import { useState } from 'react';
 import ReactQuill from 'react-quill';
 import DatePicker from "react-datepicker";
 import { useForm } from "react-hook-form";
+import { useSelector } from 'react-redux';
+import { getAllCategories } from '../../../redux/categoriesRedux';
 
 const PostForm = ({action, actionText, ...props}) => {
 
@@ -13,17 +15,22 @@ const PostForm = ({action, actionText, ...props}) => {
     const [publishedDate, setPublishedDate] = useState(props.publishedDate || '');
     const [shortDescription, setShortDescription] = useState(props.shortDescription || '');
     const [content, setContent] = useState(props.content || '');
+    const [category, setCategory] = useState(props.category || '');
 
     const { register, handleSubmit: validate, formState: { errors } } = useForm();
 
     const [dateError, setDateError] = useState(false);
     const [contentError, setContentError] = useState(false);
 
+    const categories = useSelector(state => getAllCategories(state));
+
+   categories.map(({id, name}) => console.log(id, name));
+
     const handleSubmit = () => {
       setContentError(!content);
       setDateError(!publishedDate);
-      if (content && publishedDate) {
-        action({title, author, publishedDate, shortDescription, content})
+      if ((content && content.length > 20) && publishedDate) {
+        action({title, author, publishedDate, shortDescription, content, category})
       }
     };
     
@@ -68,6 +75,18 @@ const PostForm = ({action, actionText, ...props}) => {
             onChange={(e)=> setShortDescription(e.target.value)}
             />
             {errors.shortDescription && <small className="d-block form-text text-danger mt-2">Short description is too short! (min. 20)</small>}
+        </Form.Group>
+        <Form.Group>
+          <Form.Label>Category</Form.Label>
+          <Form.Select 
+            value={category} 
+            aria-label="Default select example" 
+            {...register("category", {required: true})}
+            onChange={e => setCategory(e.target.value)}>
+            <option>Open this select menu</option>
+            {categories.map(({id, name}) => <option key={id} value={name}>{name}</option>)}
+            {errors.category && <small className="d-block form-text text-danger mt-2">Please, choose a category</small>}
+          </Form.Select>  
         </Form.Group>
         <Form.Group controlId='content'>
           <Form.Label>Content</Form.Label>
