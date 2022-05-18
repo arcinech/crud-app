@@ -71,7 +71,6 @@ const PostForm = ({action, actionText, ...props}) => {
         </Form.Group>
         <Form.Group controlId='content'>
           <Form.Label>Content</Form.Label>
-          {/*removed Form.Control as not compatibile with ReactQuill*/}
           <ReactQuill value={content} onChange={setContent} placeholder="Content"/>
           {contentError && <small className="d-block form-text text-danger mt-2">Content can't be empty</small>}
         </Form.Group>
