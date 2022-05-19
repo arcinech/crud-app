@@ -65,18 +65,6 @@ const PostForm = ({action, actionText, ...props}) => {
           {dateError && <small className="d-block form-text text-danger mt-2">Please input the date</small>}
         </Form.Group>
         <Form.Group>
-          <Form.Label>Short Description</Form.Label>
-          <Form.Control
-            {...register("shortDescription", {required: true, minLength: 20})}
-            value={shortDescription}
-            as="textarea" rows={3}
-            type="text" 
-            placeholder="Short Description" 
-            onChange={(e)=> setShortDescription(e.target.value)}
-            />
-            {errors.shortDescription && <small className="d-block form-text text-danger mt-2">Short description is too short! (min. 20)</small>}
-        </Form.Group>
-        <Form.Group>
           <Form.Label>Category</Form.Label>
           <Form.Select 
             value={category} 
@@ -87,7 +75,19 @@ const PostForm = ({action, actionText, ...props}) => {
             {categories.map(({id, name}) => 
             <option key={id} value={name}>{name}</option>)}
           </Form.Select>  
-          {errors.category && <small className="d-block form-text text-danger mt-2">Please, choose a category</small>}
+          {errors.category && <small className="d-block form-text text-danger mt-2">Please, choose a category.</small>}
+        </Form.Group>
+        <Form.Group>
+          <Form.Label>Short Description</Form.Label>
+          <Form.Control
+            {...register("shortDescription", {required: true, minLength: 20})}
+              value={shortDescription}
+              as="textarea" rows={3}
+              type="text" 
+              placeholder="Short Description" 
+              onChange={(e)=> setShortDescription(e.target.value)}
+            />
+            {errors.shortDescription && <small className="d-block form-text text-danger mt-2">Short description is too short! (min. 20)</small>}
         </Form.Group>
         <Form.Group controlId='content'>
           <Form.Label>Content</Form.Label>
