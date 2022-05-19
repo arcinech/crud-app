@@ -14,15 +14,3 @@ $breakpoints: (
     @content;
   }
 }
-
-@include mq(small) {
-  .contentWidth {width: 100%};
-}
-
-@include mq(medium) {
-  .contentWidth {width: 75%};
-}
-
-@include mq(large) {
-  .contentWidth {width: 50%};
-}
