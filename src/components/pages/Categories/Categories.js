@@ -2,9 +2,9 @@ import { useSelector } from "react-redux";
 import { getAllCategories } from "../../../redux/categoriesRedux";
 import ListGroup from 'react-bootstrap/ListGroup';
 import { Link } from "react-router-dom";
-import styles from './CategoryList.module.scss'
+import styles from './Categories.module.scss'
 
-const CategoryList = () => {
+const Categories = () => {
   const categories = useSelector(getAllCategories);
   return (
     <section className={`${styles.contentWidth} mx-auto`}>
@@ -20,4 +20,4 @@ const CategoryList = () => {
   );
 };
 
-export default CategoryList;
+export default Categories;
