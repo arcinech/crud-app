@@ -80,13 +80,14 @@ const PostForm = ({action, actionText, ...props}) => {
           <Form.Label>Category</Form.Label>
           <Form.Select 
             value={category} 
-            aria-label="Default select example" 
+            aria-label="category" 
             {...register("category", {required: true})}
             onChange={e => setCategory(e.target.value)}>
-            <option>Open this select menu</option>
-            {categories.map(({id, name}) => <option key={id} value={name}>{name}</option>)}
-            {errors.category && <small className="d-block form-text text-danger mt-2">Please, choose a category</small>}
+            <option value=''>Open this select menu</option>
+            {categories.map(({id, name}) => 
+            <option key={id} value={name}>{name}</option>)}
           </Form.Select>  
+          {errors.category && <small className="d-block form-text text-danger mt-2">Please, choose a category</small>}
         </Form.Group>
         <Form.Group controlId='content'>
           <Form.Label>Content</Form.Label>
