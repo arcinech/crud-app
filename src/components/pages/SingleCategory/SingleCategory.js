@@ -6,9 +6,12 @@ import List from "../../features/PostList/PostList"
 const SingleCategory = () => {
   const {name} = useParams();
   const posts = useSelector(state => getPostByCategor(state, name));
-  console.log(posts)
+
   return (
+    <section>
+      <h2>Category: {name}</h2>
       <List posts={posts} />
+    </section>
   );
 }
 
