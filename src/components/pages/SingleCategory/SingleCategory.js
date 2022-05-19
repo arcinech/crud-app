@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { getPostByCategor } from "../../../redux/postsRedux";
 import { useParams } from "react-router-dom";
-import List from "../../features/PostList/PostList"
+import PostsList from "../../features/PostsList/PostsList"
 
 const SingleCategory = () => {
   const {name} = useParams();
@@ -10,7 +10,7 @@ const SingleCategory = () => {
   return (
     <section>
       <h2>Category: {name}</h2>
-      <List posts={posts} />
+      <PostsList posts={posts} />
     </section>
   );
 }

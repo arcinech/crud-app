@@ -1,6 +1,6 @@
 import Button from 'react-bootstrap/Button';
 import {Link} from 'react-router-dom';
-import List from '../../features/PostList/PostList';
+import PostsList from '../../features/PostsList/PostsList';
 import { useSelector } from "react-redux";
 import { getAllPosts } from "../../../redux/postsRedux.js";
 
@@ -16,7 +16,7 @@ const Home = () => {
         </div>
       </div>
       <div>
-        <List posts={posts} />
+        <PostsList posts={posts} />
       </div>
     </>
   );

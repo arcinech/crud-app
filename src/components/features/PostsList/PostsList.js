@@ -2,7 +2,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col';
 import PostCard from "../../common/PostCard/PostCard.js";
 
-const List = ({posts}) => {
+const PostsList = ({posts}) => {
   return (
     <Row md={3} sd={2} className="py-4">
      { posts.map((post) => (
@@ -13,4 +13,4 @@ const List = ({posts}) => {
     </Row>
   );
 }
-export default List;
+export default PostsList;
