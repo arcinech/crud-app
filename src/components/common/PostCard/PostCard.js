@@ -12,7 +12,7 @@ const PostCard = ({id, title, author, publishedDate, shortDescription, content, 
     const urlCheck = (urlParam.name || !urlParam.id);
     // select short or full text
     const selectText = () => {
-        if (urlCheck) return<Card.Text>{shortDescription}</Card.Text>
+        if(urlCheck) return <Card.Text>{shortDescription}</Card.Text>
         return <p className="card-text" dangerouslySetInnerHTML={{__html: content}}/>
     }
 
