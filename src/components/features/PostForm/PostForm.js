@@ -71,7 +71,7 @@ const PostForm = ({action, actionText, ...props}) => {
             aria-label="category" 
             {...register("category", {required: true})}
             onChange={e => setCategory(e.target.value)}>
-            <option value=''>Open this select menu</option>
+            <option value ='' disabled selected>Select category</option>
             {categories.map(({id, name}) => 
             <option key={id} value={name}>{name}</option>)}
           </Form.Select>  
