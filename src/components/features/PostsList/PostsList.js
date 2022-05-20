@@ -1,11 +1,8 @@
-import { useSelector } from "react-redux";
-import { getAllPosts } from "../../../redux/postsRedux.js";
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col';
 import PostCard from "../../common/PostCard/PostCard.js";
 
-const List = () => {
-  const posts = useSelector(getAllPosts);
+const PostsList = ({posts}) => {
   return (
     <Row md={3} sd={2} className="py-4">
      { posts.map((post) => (
@@ -16,4 +13,4 @@ const List = () => {
     </Row>
   );
 }
-export default List;
+export default PostsList;

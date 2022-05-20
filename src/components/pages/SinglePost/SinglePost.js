@@ -7,7 +7,6 @@ import DeleteModal from '../../features/DeleteModal/DeleteModal'
 
 const SinglePost = () => {
   const {id} = useParams();
-
   const post = useSelector(state => getPostById(state, id));
 
   if (!post) {return <Navigate to="/" />}

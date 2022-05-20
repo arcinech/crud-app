@@ -1,8 +1,12 @@
 import Button from 'react-bootstrap/Button';
 import {Link} from 'react-router-dom';
-import List from '../../features/PostList/PostList';
+import PostsList from '../../features/PostsList/PostsList';
+import { useSelector } from "react-redux";
+import { getAllPosts } from "../../../redux/postsRedux.js";
 
 const Home = () => {
+  const posts = useSelector(getAllPosts);
+
   return (
     <>
       <div className="d-flex justify-content-between">
@@ -12,7 +16,7 @@ const Home = () => {
         </div>
       </div>
       <div>
-        <List />
+        <PostsList posts={posts} />
       </div>
     </>
   );

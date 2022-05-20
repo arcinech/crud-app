@@ -5,6 +5,8 @@ import { useState } from 'react';
 import ReactQuill from 'react-quill';
 import DatePicker from "react-datepicker";
 import { useForm } from "react-hook-form";
+import { useSelector } from 'react-redux';
+import { getAllCategories } from '../../../redux/categoriesRedux';
 
 const PostForm = ({action, actionText, ...props}) => {
 
@@ -13,17 +15,22 @@ const PostForm = ({action, actionText, ...props}) => {
     const [publishedDate, setPublishedDate] = useState(props.publishedDate || '');
     const [shortDescription, setShortDescription] = useState(props.shortDescription || '');
     const [content, setContent] = useState(props.content || '');
+    const [category, setCategory] = useState(props.category || '');
 
     const { register, handleSubmit: validate, formState: { errors } } = useForm();
 
     const [dateError, setDateError] = useState(false);
     const [contentError, setContentError] = useState(false);
 
+    const categories = useSelector(getAllCategories);
+
+   categories.map(({id, name}) => console.log(id, name));
+
     const handleSubmit = () => {
       setContentError(!content);
       setDateError(!publishedDate);
-      if (content && publishedDate) {
-        action({title, author, publishedDate, shortDescription, content})
+      if ((content && content.length > 20) && publishedDate) {
+        action({title, author, publishedDate, shortDescription, content, category})
       }
     };
     
@@ -58,14 +65,27 @@ const PostForm = ({action, actionText, ...props}) => {
           {dateError && <small className="d-block form-text text-danger mt-2">Please input the date</small>}
         </Form.Group>
         <Form.Group>
+          <Form.Label>Category</Form.Label>
+          <Form.Select 
+            value={category} 
+            aria-label="category" 
+            {...register("category", {required: true})}
+            onChange={e => setCategory(e.target.value)}>
+            <option value ='' disabled selected>Select category</option>
+            {categories.map(({id, name}) => 
+            <option key={id} value={name}>{name}</option>)}
+          </Form.Select>  
+          {errors.category && <small className="d-block form-text text-danger mt-2">Please, choose a category.</small>}
+        </Form.Group>
+        <Form.Group>
           <Form.Label>Short Description</Form.Label>
           <Form.Control
             {...register("shortDescription", {required: true, minLength: 20})}
-            value={shortDescription}
-            as="textarea" rows={3}
-            type="text" 
-            placeholder="Short Description" 
-            onChange={(e)=> setShortDescription(e.target.value)}
+              value={shortDescription}
+              as="textarea" rows={3}
+              type="text" 
+              placeholder="Short Description" 
+              onChange={(e)=> setShortDescription(e.target.value)}
             />
             {errors.shortDescription && <small className="d-block form-text text-danger mt-2">Short description is too short! (min. 20)</small>}
         </Form.Group>
